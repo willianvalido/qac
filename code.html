@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário Semelhante ao Microsoft Forms</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: url('https://lists.office.com/Images/9188040d-6c67-4c5b-b112-36a304b66dad/00000000-0000-0000-0006-400005ca5ef9/T3B84CO4UAEUD43PA9L6OK09HX/fe632d70-6b24-4b28-bf6b-10dee2af170a') center center no-repeat;
+            background-size: cover;
+            overflow: hidden;
+        }
+
+        #form-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            overflow-y: auto;
+            background: url('https://lists.office.com/Images/9188040d-6c67-4c5b-b112-36a304b66dad/00000000-0000-0000-0006-400005ca5ef9/T3B84CO4UAEUD43PA9L6OK09HX/fe632d70-6b24-4b28-bf6b-10dee2af170a') center center no-repeat fixed;
+            background-size: cover;
+        }
+
+        #form-content {
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 800px;
+            max-width: 100%;
+            margin: 50px auto; /* Ajuste a margem superior conforme necessário */
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .radio-label {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .radio-text {
+            margin-left: 10px;
+        }
+
+        input[type="radio"] {
+            margin-right: 8px;
+        }
+
+        .custom-radio {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .checkmark {
+            position: relative;
+            display: inline-block;
+            height: 20px;
+            width: 20px;
+            background-color: #fff;
+            border: 2px solid hsl(0, 0%, 0%);
+            border-radius: 50%;
+        }
+
+        .custom-radio input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .custom-radio input:checked ~ .checkmark {
+            background-color: #111111;
+        }
+
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .date-container,
+        .time-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .date-label,
+        .time-label {
+            margin-right: 10px;
+        }
+
+        .additional-questions {
+            display: none;
+        }
+
+        #meuFormulario {
+            display: flex;
+            flex-direction: column;
+        }
+
+        #meuFormulario h2 {
+            color: #ffffff;
+            background-color: #000000;
+            padding: 40px;
+            margin-top: 0;
+            border-radius: 5px 5px 0 0;
+        }
+
+        #meuFormulario img {
+            width: 115px;
+            height: 83px;
+            margin-right: 20px;
+            border-radius: 5px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div id="form-container">
+        <div id="form-content">
+            <form id="meuFormulario">
+                <img src="https://lists.office.com/Images/9188040d-6c67-4c5b-b112-36a304b66dad/00000000-0000-0000-0006-400005ca5ef9/T3B84CO4UAEUD43PA9L6OK09HX/67db7539-f1fc-4afa-a006-40584ccaa85a" alt="Descrição da Imagem">
+                <h2>Comunicação de incidentes e quase acidentes <br> Viterra Bioenergia </h2>
+
+                <h4>Campos Obrigatórios*</h4>
+
+                <label for="unidade">1.Unidade.*</label>
+                <label class="radio-label">
+                    <span class="custom-radio">
+                        <input type="radio" id="riovermelho" name="unidade" value="riovermelho" required>
+                        <span class="checkmark"></span>
+                    </span>
+                    <span class="radio-text">Rio Vermelho</span>
+                </label>
+
+                <label class="radio-label">
+                    <span class="custom-radio">
+                        <input type="radio" id="novaunialco" name="unidade" value="novaunialco" required>
+                        <span class="checkmark"></span>
+                    </span>
+                    <span class="radio-text">Nova Unialco</span>
+                </label>
+
+                <label for="matricula">2.Digite sua matrícula.</label>
+                <input type="text" id="matricula" name="matricula">
+
+                <label for="nome">3.Digite Seu Nome.</label>
+                <input type="text" id="nome" name="nome">
+
+                <label for="date">4.Selecione a data do desvio.*</label>
+                <div class="date-container">
+                    <label class="date-label" for="data">Data:</label>
+                    <input type="date" id="data" name="data" required>
+                </div>
+
+                <label for="time">5.Digite o horário do desvio.*</label>
+                <div class="time-container">
+                    <label class="time-label" for="horario">Horário:</label>
+                    <input type="time" id="horario" name="horario" required>
+                </div>
+
+                <label for="area">6.Selecione SUA área.*</label>
+
+                <div class="radio-container">
+                    <label class="radio-label">
+                        <span class="custom-radio">
+                            <input type="radio" id="adm" name="area" value="adm" required onchange="mostrarPerguntasAdicionais('adm')">
+                            <span class="checkmark"></span>
+                        </span>
+                        <span class="radio-text">Administração</span>
+                    </label>
+
+                    <label class="radio-label">
+                        <span class="custom-radio">
+                            <input type="radio" id="ind" name="area" value="ind" required onchange="mostrarPerguntasAdicionais('ind')">
+                            <span class="checkmark"></span>
+                        </span>
+                        <span class="radio-text">Indústria</span>
+                    </label>
+
+                    <label class="radio-label">
+                        <span class="custom-radio">
+                            <input type="radio" id="agr" name="area" value="agr" required onchange="mostrarPerguntasAdicionais('agr')">
+                            <span class="checkmark"></span>
+                        </span>
+                        <span class="radio-text">Agrícola</span>
+                    </label>
+
+                    <label class="radio-label">
+                        <span class="custom-radio">
+                            <input type="radio" id="log" name="area" value="log" required onchange="mostrarPerguntasAdicionais('log')">
+                            <span class="checkmark"></span>
+                        </span>
+                        <span class="radio-text">Logística</span>
+                    </label>
+                </div>
+
+                <div class="additional-questions" id="perguntasAdm">
+                    <label for="setorAdm">7.Qual SEU Setor Administrativo?</label>
+                    <select id="setorAdm" name="perguntasAdm" required>
+                        <option value="" disabled selected hidden>Selecione seu setor</option>
+                        <option value="rh">Recursos Humanos</option>
+                        <option value="segsau">Segurança e Saúde Ocupacional</option>
+                        <option value="gestamb">Gestão Ambiental</option>
+                        <option value="quali">Qualidade</option>
+                        <option value="controladoria">Controladoria</option>
+                        <option value="financeiro">Financeiro</option>
+                        <option value="suprimentos">Suprimentos</option>
+                        <option value="ti">Tecnologia da Informação</option>
+                        <option value="conserva">Conservação Patrimonial</option>
+                        <option value="ref">Refeitório</option>
+                    </select>
+
+                    <div class="ramificacao-adicional" id="ramificacaoAdm">
+                        <label for="ramificacaoAdm">8.Digite o local do desvio (ex: Moenda, Caldeiraria, Nome da Fazenda).*</label>
+                        <input type="text" id="ramificacaoAdm" name="ramificacaoAdm" required>
+                    </div>
+
+                    <label for="desvioAdm">9. Selecione o tipo do desvio.*</label>
+                    <label class="radio-label">
+                        <span class="custom-radio">
+                            <input type="radio" id="quaseacidente" name="desvio" value="quaseacidente" required>
+                            <span class="checkmark"></span>
+                        </span>
+                        <span class="radio-text">Quase Acidente</span>
+                    </label>
+                    
+                    <label class="radio-label">
+                        <span class="custom-radio">
+                            <input type="radio" id="condicaoinsegura" name="desvio" value="condicaoinsegura" required>
+                            <span class="checkmark"></span>
+                        </span>
+                        <span class="radio-text">Condição Insegura</span>
+                    </label>
+
+                <div class="additional-questions" id="perguntasInd">
+                    <label for="perguntasInd">7.Qual SEU Setor Industrial?</label>
+                    <select id="perguntasInd" name="perguntasInd" required>
+                        <option value="" disabled selected hidden>Selecione seu setor</option>
+                        <option value="eletr">Elétrica e Instrumentação</option>
+                        <option value="lab">Laboratórios</option>
+                        <option value="manucivil">Manutenção Civil</option>
+                        <option value="manuindus">Manutenção Industrial</option>
+                        <option value="vapor">Geração De Vapor</option>
+                        <option value="rece">Recepção De Cana e Moagem</option>
+                        <option value="tratamento">Tratamento De Caldo</option>
+                        <option value="fabrica">Fábrica De Açúcar</option>
+                        <option value="destilaria">Destilaria e Fermentação</option>
+                        <option value="armazem">Armarzenamento De Açúcar</option>
+                        <option value="cgt">CGT</option>
+                        <option value="pcm">PCM e Ferramentaria</option>
+                    </select>
+                </div>
+
+                <div class="additional-questions" id="perguntasAgr">
+                    <label for="perguntasAgr">7.Qual SEU Setor Agrícola?</label>
+                    <select id="perguntasAgr" name="perguntasAgr" required>
+                        <option value="" disabled selected hidden>Selecione seu setor</option>
+                        <option value="manuagri">Manutenção Agrícola</option>
+                        <option value="ctt">CTT</option>
+                        <option value="plantiomec">Plantio Mecanizado</option>
+                        <option value="tratos">Tratos Culturais</option>
+                        <option value="ferti">Fertirrigação</option>
+                        <option value="planejamento">Planejamento Agrícola</option>
+                        <option value="desenvolvi">Desenvolvimento Agronômico</option>
+                        <option value="pcmagri">PCM</option>
+                        <option value="logestrada">Logística e Conservação De Estrada</option>
+                        <option value="solo">Preparo De Solo</option>
+                        <option value="patio">Patio Externo</option>
+                    </select>
+                </div>
+
+                <div class="additional-questions" id="perguntasLog">
+                    <label for="perguntasLog">7.Qual SEU Setor logístico?</label>
+                    <select id="perguntasLog" name="perguntasLog" required>
+                        <option value="" disabled selected hidden>Selecione seu setor</option>
+                        <option value="etanol">Expedição De Etanol</option>
+                        <option value="acucar">Expedição De Açúcar</option>
+                        <option value="trans">Transporte Rodoviário</option>
+                        <option value="adm">Administrativo</option>
+                    </select>
+                </div>
+
+                <button type="submit">Enviar</button>
+            </form>
+        </div>
+    </div>
+    <div id="mensagemSucesso" style="display: none;">
+        <p>Formulário enviado com sucesso!</p>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script>
+        document.getElementById("meuFormulario").addEventListener("submit", function (event) {
+            event.preventDefault();
+    
+            var formData = {
+                matricula: document.getElementById("matricula").value,
+                nome: document.getElementById("nome").value,
+                data: document.getElementById("data").value,
+                horario: document.getElementById("horario").value,
+                area: document.querySelector('input[name="area"]:checked') ? document.querySelector('input[name="area"]:checked').value : null,
+            };
+    
+            if (!formData.matricula || !formData.nome || !formData.data || !formData.horario || !formData.area) {
+                alert("Por favor, preencha todos os campos obrigatórios.");
+                return;
+            }
+    
+            console.log("Dados do formulário coletados:", formData);
+    
+            var areaSelecionada = formData.area.toLowerCase();
+            mostrarPerguntasAdicionais(areaSelecionada);
+    
+            if (areaSelecionada === "adm") {
+                formData.perguntasAdm = document.getElementById("setorAdm").value;
+                formData.ramificacaoAdm = document.getElementById("ramificacaoAdm").value;
+            } else if (areaSelecionada === "ind") {
+                formData.perguntasInd = document.getElementById("setorInd").value;
+            } else if (areaSelecionada === "agr") {
+                formData.perguntasAgr = document.getElementById("setorAgr").value;
+            } else if (areaSelecionada === "log") {
+                formData.perguntasLog = document.getElementById("setorLog").value;
+            }
+    
+            formData.desvio = [];
+            var desvioCheckboxes = document.querySelectorAll('input[name="desvio"]:checked');
+            desvioCheckboxes.forEach(function (checkbox) {
+                formData.desvio.push(checkbox.value);
+            });
+    
+            console.log("Dados adicionais coletados:", formData);
+    
+            var pdf = new jsPDF();
+            pdf.text(20, 20, "Formulário de Comunicação de Incidentes e Quase Acidentes");
+            var yPos = 40;
+    
+            Object.keys(formData).forEach(function (key) {
+                yPos += 10;
+                pdf.text(20, yPos, key + ": " + formData[key]);
+            });
+    
+            console.log("PDF criado:", pdf);
+    
+            pdf.save("formulario.pdf");
+    
+            document.getElementById("form-container").style.display = "none";
+            document.getElementById("mensagemSucesso").style.display = "block";
+        });
+    
+        function mostrarPerguntasAdicionais(areaSelecionada) {
+            var perguntas = document.getElementsByClassName('additional-questions');
+            for (var i = 0; i < perguntas.length; i++) {
+                perguntas[i].style.display = 'none';
+            }
+    
+            var perguntaAtual = document.getElementById('perguntas' + areaSelecionada.charAt(0).toUpperCase() + areaSelecionada.slice(1));
+            if (perguntaAtual) {
+                perguntaAtual.style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>
